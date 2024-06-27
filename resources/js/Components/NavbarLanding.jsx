@@ -4,13 +4,6 @@ import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 export default function NavbarLanding() {
-    const customTheme = {
-        color: {
-            primary:
-                "bg-amber-50 hover:bg-stone-300 dark:bg-amber-50 dark:hover:bg-amber-100 ",
-        },
-    };
-
     const GoToPageLogin = () => {
         Inertia.get("/login");
     };
@@ -19,9 +12,9 @@ export default function NavbarLanding() {
     };
     return (
         <>
-            <Navbar fluid className=" bg-[#d67d00] dark:bg-[#1a1a1a]">
+            <Navbar fluid className=" bg-[#1a1a1a] dark:bg-[#1a1a1a]">
                 <Navbar.Brand>
-                    <span className="self-center whitespace-nowrap text-xl font-bold dark:text-white">
+                    <span className="self-center whitespace-nowrap text-xl text-white font-bold dark:text-white">
                         CEATER
                     </span>
                 </Navbar.Brand>
@@ -35,8 +28,7 @@ export default function NavbarLanding() {
                         Login
                     </Button>
                     <Button
-                        color="warning"
-                        className="text-white ml-4"
+                        className="text-white ml-4 bg-[#1a1a1a]"
                         onClick={GoToPageRegister}
                     >
                         Register
@@ -44,17 +36,20 @@ export default function NavbarLanding() {
                     <Navbar.Toggle className="ml-4" />
                 </div>
                 <Navbar.Collapse color="yellow">
-                    <Navbar.Link className="text-base text-[#241500]" href="/">
+                    <Navbar.Link
+                        className="text-base text-white dark:text-white"
+                        href="/"
+                    >
                         Home
                     </Navbar.Link>
                     <Navbar.Link
-                        className="text-base text-[#241500]"
+                        className="text-base text-white dark:text-white"
                         href="/catalog"
                     >
                         Catalog
                     </Navbar.Link>
                     <Navbar.Link
-                        className="text-base text-[#241500]"
+                        className="text-base text-white dark:text-white"
                         href="/about"
                     >
                         About

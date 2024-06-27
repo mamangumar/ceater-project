@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Auth::login($user);
-        return Inertia::location(route('/login'));
+        return Inertia::render('Auth/AuthV2/Login');
     }
     public function login (Request $request){
         $credentials = $request->only('email', 'password');

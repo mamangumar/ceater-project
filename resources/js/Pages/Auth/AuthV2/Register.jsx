@@ -3,18 +3,11 @@ import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 
 export default function register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
+        name: "Rizal Dwi Anggoro",
+        email: "rizal@email.com",
+        password: "password",
+        password_confirmation: "password",
     });
-    const submit = (e) => {
-        e.preventDefault();
-
-        console.log(data);
-
-        post(route("register"));
-    };
 
     return (
         <div className="mx-2 mt-14">
@@ -25,7 +18,16 @@ export default function register() {
                     </h2>
                 </div>
                 <Card className="max-w-sm">
-                    <form className="flex flex-col gap-4" onSubmit={submit}>
+                    <form
+                        className="flex flex-col gap-4"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            post(route("register"), {
+                                onSuccess: (e) => console.log(e),
+                                onError: (e) => console.log(e),
+                            });
+                        }}
+                    >
                         <div>
                             <div className="mb-2 block">
                                 <Label htmlFor="name">Your Name</Label>
@@ -33,12 +35,12 @@ export default function register() {
                             <TextInput
                                 id="name"
                                 name="name"
-                                value={data.name}
                                 type="text"
                                 placeholder="Your name"
                                 required
+                                value={data.name}
                                 onChange={(e) =>
-                                    setData("name", e.target.value)
+                                    setData({ ...data, name: e.target.value })
                                 }
                             />
                         </div>
@@ -51,8 +53,9 @@ export default function register() {
                                 type="email"
                                 placeholder="name@google.com"
                                 required
+                                value={data.email}
                                 onChange={(e) =>
-                                    setData("email", e.target.value)
+                                    setData({ ...data, email: e.target.value })
                                 }
                             />
                         </div>
@@ -67,8 +70,12 @@ export default function register() {
                                 id="password"
                                 type="password"
                                 required
+                                value={data.password}
                                 onChange={(e) =>
-                                    setData("password", e.target.value)
+                                    setData({
+                                        ...data,
+                                        password: e.target.value,
+                                    })
                                 }
                             />
                         </div>

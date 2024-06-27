@@ -32,10 +32,10 @@ use Inertia\Inertia;
 Route::get('/', [LandingPageController::class,'show'])->name('LandingPage');
 Route::get('/about', [LandingPageController::class, 'about']);
 Route::get('/catalog', [LandingPageController::class, 'catalog']);
-Route::get('/login', [LandingPageController::class, 'login'])->name('login');
-Route::get('/register', [LandingPageController::class, 'register'])->name('register');
+Route::get('/login', [LandingPageController::class, 'login']);
+Route::get('register', [LandingPageController::class, 'register'])->name('register');
 
-Route::post('login',[AuthenticationController::class,'login']);
+Route::post('login',[AuthenticationController::class,'login'])->name('login');
 Route::post('register',[AuthenticationController::class,'register']);
 
 // Costumer
