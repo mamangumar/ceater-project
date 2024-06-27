@@ -19,9 +19,9 @@ export default function NavbarLanding() {
     };
     return (
         <>
-            <Navbar fluid>
+            <Navbar fluid className=" bg-[#d67d00] dark:bg-[#1a1a1a]">
                 <Navbar.Brand>
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                    <span className="self-center whitespace-nowrap text-xl font-bold dark:text-white">
                         CEATER
                     </span>
                 </Navbar.Brand>
@@ -44,11 +44,21 @@ export default function NavbarLanding() {
                     <Navbar.Toggle className="ml-4" />
                 </div>
                 <Navbar.Collapse color="yellow">
-                    <Navbar.Link href="/" active>
+                    <Navbar.Link className="text-base text-[#241500]" href="/">
                         Home
                     </Navbar.Link>
-                    <Navbar.Link href="/catalog">Catalog</Navbar.Link>
-                    <Navbar.Link href="/about">About</Navbar.Link>
+                    <Navbar.Link
+                        className="text-base text-[#241500]"
+                        href="/catalog"
+                    >
+                        Catalog
+                    </Navbar.Link>
+                    <Navbar.Link
+                        className="text-base text-[#241500]"
+                        href="/about"
+                    >
+                        About
+                    </Navbar.Link>
                 </Navbar.Collapse>
             </Navbar>
         </>
