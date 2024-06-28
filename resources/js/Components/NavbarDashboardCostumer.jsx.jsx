@@ -40,8 +40,8 @@ export default function NavCostumer() {
                 <Navbar.Link href="#" active>
                     Home
                 </Navbar.Link>
-                <Navbar.Link href="#">Catalog</Navbar.Link>
-                <Navbar.Link href="#">About</Navbar.Link>
+                <Navbar.Link href="#">Vendor</Navbar.Link>
+                <Navbar.Link href="#">My Order</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );
