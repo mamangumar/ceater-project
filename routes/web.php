@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardCostumerController;
+use App\Http\Controllers\DashboardVendorController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,10 +38,32 @@ Route::get('/catalog', [LandingPageController::class, 'catalog']);
 Route::get('/login', [LandingPageController::class, 'login']);
 Route::get('register', [LandingPageController::class, 'register'])->name('register');
 
-Route::post('login',[AuthenticationController::class,'login'])->name('login');
-Route::post('register',[AuthenticationController::class,'register']);
+Route::post('login',[AuthenticationController::class,'login'])->name('login.post');
+Route::post('register',[AuthenticationController::class,'register.post']);
 
-// Costumer
-Route::get('/dashboard', [DashboardCostumerController::class, 'show'])->name('dashboard');
+// Costumer routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardCostumerController::class, 'show'])->name('dashboard');
+});
 
+// Admin routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardAdminController::class, 'show'])->name('admin.dashboard');
+});
+
+
+
+//  Route::get('vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
+//     Route::post('vendor/profile', [VendorController::class, 'store'])->name('vendor.store');
+//     Route::put('vendor/profile/{id}', [VendorController::class, 'update'])->name('vendor.update');
+//     Route::delete('vendor/profile/{id}', [VendorController::class, 'destroy'])->name('vendor.destroy');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/vendor/dashboard', [DashboardVendorController::class, 'show'])->name('vendor.dashboard');
+    Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
+    Route::post('/vendor/profile', [ProfileController::class, 'store'])->name('vendor.store');
+    Route::put('/vendor/profile/{id}', [ProfileController::class, 'update'])->name('vendor.update');
+    Route::delete('/vendor/profile/{id}', [ProfileController::class, 'destroy'])->name('vendor.destroy');
+});
 // require __DIR__.'/auth.php';

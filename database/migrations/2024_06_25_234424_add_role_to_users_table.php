@@ -12,7 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('costumer'); // Menambahkan kolom role dengan default value 'user'
+            $table->string('image')->nullable();
+            $table->enum('role', ['customer', 'vendor', 'admin'])->default('customer'); // Menambahkan kolom role dengan default value 
+            $table->string('description')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->string('phone_number')->nullable();
+
         });
     }
 
@@ -23,6 +32,13 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role'); // Menghapus kolom role
+            $table->dropColumn('description')->nullable();
+            $table->dropColumn('address')->nullable();
+            $table->dropColumn('city')->nullable();
+            $table->dropColumn('state')->nullable();
+            $table->dropColumn('postal_code')->nullable();
+            $table->dropColumn('country')->nullable();
+            $table->dropColumn('phone_number')->nullable();
         });
          Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');

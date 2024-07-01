@@ -13,18 +13,20 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-         DB::table('categories')->insert([
-            ['name_category' => 'Chicken'],
-            ['name_category' => 'Noodles'],
-            ['name_category' => 'Rice'],
-            ['name_category' => 'Vegetables'],
-            ['name_category' => 'Red meat'],
-            ['name_category' => 'Snacks'],
-            ['name_category' => 'Meals'],
-            ['name_category' => 'Beverages'],
-            ['name_category' => 'Spicy'],
-            ['name_category' => 'Sweet'],
-            ['name_category' => 'Cold'],
+         DB::table('category')->insert([
+            ['name' => 'Chicken'],
+            ['name' => 'Noodles'],
+            ['name' => 'Rice'],
+            ['name' => 'Vegetables'],
+            ['name' => 'Red meat'],
+            ['name' => 'Snacks'],
+            ['name' => 'Meals'],
+            ['name' => 'Beverages'],
+            ['name' => 'Spicy'],
+            ['name' => 'Sweet'],
+            ['name' => 'Cold'],
+            ['name' => 'Big Portions'],
+            ['name' => 'Catering'],
             
         ]);
     }

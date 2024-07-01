@@ -1,6 +1,6 @@
 import NavCostumer from "@/Components/NavbarDashboardCostumer.jsx";
 import { Checkbox } from "flowbite-react";
-export default function DashboardCostumer({ auth }) {
+export default function DashboardCostumer(props) {
     return (
         <>
             <NavCostumer />
@@ -60,6 +60,7 @@ export default function DashboardCostumer({ auth }) {
                     </div>
                 </div>
                 <div className="w-3/4">
+                    <p>{JSON.stringify(props)}</p>
                     <p>P ingpo 2</p>
                 </div>
             </main>

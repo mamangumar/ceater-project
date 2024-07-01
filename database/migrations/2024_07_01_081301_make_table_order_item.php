@@ -11,9 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {$table->unsignedBigInteger('menu_id');});
-        Schema::table('category', function (Blueprint $table) {
+        Schema::create('order_item', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('menu_id');
+            $table->unsignedInteger('amount');
+            $table->string('is_done');
+            $table->timestamps();
+
             $table->foreign('menu_id')->references('id')->on('menu');
+            $table->foreign('order_id')->references('id')->on('order');
         });
     }
 
@@ -22,8 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('category', function (Blueprint $table) {
-            $table->dropColumn('menu_id'); // Menghapus kolom role
-        });
+        Schema::dropIfExists('order_item');
     }
 };

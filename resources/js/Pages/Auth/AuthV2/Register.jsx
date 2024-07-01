@@ -22,7 +22,7 @@ export default function register() {
                         className="flex flex-col gap-4"
                         onSubmit={(e) => {
                             e.preventDefault();
-                            post(route("register"), {
+                            post(route("register.post"), {
                                 onSuccess: (e) => console.log(e),
                                 onError: (e) => console.log(e),
                             });

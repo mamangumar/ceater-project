@@ -16,13 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('vendor_id');
             $table->string('name');
             $table->string('description');
+            $table->decimal('price', 10, 2);
+            $table->unsignedInteger('amount');
+            $table->string('image')->nullable();
             $table->timestamps();
+            $table->foreign('vendor_id')->references('id')->on('users')->onDelete('cascade');
         });
-         Schema::table('menu', function (Blueprint $table) {
-            $table->foreign('vendor_id')->references('id')->on('users');
-        });
-        Schema::table('category', function (Blueprint $table) {
-            $table->foreign('menu_id')->references('id')->on('menus');});
+         
+        
     }
 
     /**

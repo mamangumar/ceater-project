@@ -37,9 +37,11 @@ class AuthenticationController extends Controller
             $request->session()->regenerate();
 
             // Redirect based on user role
+              // Redirect based on user role
             if (Auth::user()->role === 'admin') {
-                // return Inertia::location(route('AdminDashboard'));
-                // return redirect()->route('AdminDashboard');
+                return redirect()->route('admin.dashboard');
+            } elseif (Auth::user()->role === 'vendor') {
+                return redirect()->route('vendor.dashboard');
             } else {
                 return redirect()->route('dashboard');
             }
