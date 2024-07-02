@@ -50,6 +50,15 @@ export default function DashboardVendor(props) {
                 </div>
             </section>
             <p>Bagian tampilan menu</p>
+            <div>
+                {props.menus.map((menu, index) => (
+                    <div>
+                        <p>{menu.name}</p>
+                        <p>{menu.description}</p>
+                        <p>{menu.price}</p>
+                    </div>
+                ))}
+            </div>
             <p>Halaman Dashboard Vendor</p>
         </>
     );

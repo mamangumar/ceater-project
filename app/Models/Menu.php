@@ -11,4 +11,6 @@ class Menu extends Model
         return $this->hasMany(CategoryMenu::class);
     }
     use HasFactory;
+
+    protected $table = 'menu';
 }
