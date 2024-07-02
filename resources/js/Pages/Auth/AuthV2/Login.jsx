@@ -9,14 +9,14 @@ export default function Login() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("login.post"));
+        post(route("login"));
     };
 
     return (
         <div className="mx-2 mt-14">
             <div className="max-w-sm mx-auto gap-16 items-center py-8 lg:py-16 ">
                 <div className="font-light text-center text-gray-500 sm:text-lg">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
+                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white ">
                         Login Ceater
                     </h2>
                 </div>
@@ -64,9 +64,12 @@ export default function Login() {
                             <Label htmlFor="remember">Remember me</Label>
                         </div>
                         <div>
-                            <span>
+                            <span className="text-white">
                                 Belum punya akun?{" "}
-                                <a href="/register" className="text-teal-900 ">
+                                <a
+                                    href="/register"
+                                    className="font-bold text-[#ffaf72] "
+                                >
                                     Register disini
                                 </a>
                             </span>

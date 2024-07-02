@@ -3,14 +3,14 @@ import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
 export default function Profile(props) {
     const { data, setData, post, processing, errors, reset, put } = useForm({
-        name: "",
-        description: "",
-        address: "",
-        city: "",
-        state: "",
-        postal_code: "",
-        country: "",
-        phone_number: "",
+        name: props.vendor.name || "",
+        description: props.vendor.description || "",
+        address: props.vendor.address || "",
+        city: props.vendor.city || "",
+        state: props.vendor.state || "",
+        postal_code: props.vendor.postal_code || "",
+        country: props.vendor.country || "",
+        phone_number: props.vendor.phone_number || "",
     });
 
     const id = props.auth.user.id;

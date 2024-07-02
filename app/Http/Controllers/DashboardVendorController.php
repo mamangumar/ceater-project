@@ -17,6 +17,10 @@ class DashboardVendorController extends Controller
 
 
         $vendor->image = Storage::disk('public')->url($vendor->image);
+        $menus = $menus->map(function ($menu) {
+            $menu->image = Storage::disk('public')->url($menu->image);
+            return $menu;
+        });
 
 
         return Inertia::render(
@@ -30,6 +34,17 @@ class DashboardVendorController extends Controller
         $vendor = Auth::user();
         $orders = $vendor->orders()->get();
 
+        $vendor->image = Storage::disk('public')->url($vendor->image);
+
         return Inertia::render('Vendor/Orders', compact('vendor', 'orders'));
+    }
+
+    public function showMenu()
+    {
+        $vendor = Auth::user();
+
+        $vendor->image = Storage::disk('public')->url($vendor->image);
+
+        return Inertia::render('Vendor/Menu', ['vendor' => $vendor]);
     }
 }

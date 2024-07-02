@@ -73,11 +73,11 @@ class ProfileController extends Controller
     //         'country' => 'required|string|max:255',
     //         'phone_number' => 'required|string|max:20',
     //     ]);
-        
+
     //     if ($validator->fails()) {
     //         return response()->json(['errors' => $validator->errors()], 422);
     //     }
-        
+
     //     $user = User::create([
     //         'name' => $request->name,
     //         'description' => $request->description,
@@ -94,40 +94,41 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'address' => 'required|string|max:255',
-        'city' => 'required|string|max:255',
-        'state' => 'required|string|max:255',
-        'postal_code' => 'required|string|max:20',
-        'country' => 'required|string|max:255',
-        'phone_number' => 'required|string|max:20',
-    ]);
-     if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
-        $user = User::findOrFail($id);
-    $user->update([
-        'name' => $request->name,
-        'description' => $request->description,
-        'address' => $request->address,
-        'city' => $request->city,
-        'state' => $request->state,
-        'postal_code' => $request->postal_code,
-        'country' => $request->country,
-        'phone_number' => $request->phone_number,
-    ]);
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:20',
+            'country' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->description = $request->description;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->state = $request->state;
+        $user->postal_code = $request->postal_code;
+        $user->country = $request->country;
+        $user->phone_number = $request->phone_number;
+
+        $user->save();
 
         return redirect()->route('vendor.dashboard')->with('success', 'Profile updated successfully.');
     }
 
     public function destroy($id)
     {
-         $user = User::findOrFail($id);
-    $user->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
-    return redirect()->route('vendor.profile')->with('success', 'Profile deleted successfully.');
+        return redirect()->route('vendor.profile')->with('success', 'Profile deleted successfully.');
     }
-
 }

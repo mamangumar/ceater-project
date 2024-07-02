@@ -13,7 +13,7 @@ export default function register() {
         <div className="mx-2 mt-14">
             <div className="max-w-sm mx-auto gap-16 items-center py-8 lg:py-16 ">
                 <div className="font-light text-center text-gray-500 sm:text-lg">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
+                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white ">
                         Register Ceater
                     </h2>
                 </div>
@@ -22,7 +22,7 @@ export default function register() {
                         className="flex flex-col gap-4"
                         onSubmit={(e) => {
                             e.preventDefault();
-                            post(route("register.post"), {
+                            post(route("register"), {
                                 onSuccess: (e) => console.log(e),
                                 onError: (e) => console.log(e),
                             });

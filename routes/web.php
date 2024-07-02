@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardCostumerController;
 use App\Http\Controllers\DashboardVendorController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\MenuFormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Foundation\Application;
@@ -32,14 +33,14 @@ use Inertia\Inertia;
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-Route::get('/', [LandingPageController::class,'show'])->name('LandingPage');
+Route::get('/', [LandingPageController::class, 'show'])->name('LandingPage');
 Route::get('/about', [LandingPageController::class, 'about']);
 Route::get('/catalog', [LandingPageController::class, 'catalog']);
-Route::get('/login', [LandingPageController::class, 'login']);
-Route::get('register', [LandingPageController::class, 'register'])->name('register');
+Route::get('/login', [LandingPageController::class, 'login'])->name('login');
+Route::get('/register', [LandingPageController::class, 'register'])->name('register');
 
-Route::post('login',[AuthenticationController::class,'login'])->name('login.post');
-Route::post('register',[AuthenticationController::class,'register.post']);
+Route::post('login', [AuthenticationController::class, 'login'])->name('login.post');
+Route::post('register', [AuthenticationController::class, 'register.post']);
 
 // Costumer routes
 Route::middleware(['auth'])->group(function () {
@@ -61,6 +62,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/vendor/dashboard', [DashboardVendorController::class, 'show'])->name('vendor.dashboard');
+    Route::get('/vendor/orders', [DashboardVendorController::class, 'showOrders'])->name('vendor.orders');
+    Route::get('/vendor/menu', [DashboardVendorController::class, 'showMenu'])->name('vendor.menu');
+    Route::post('/vendor/menu', [MenuFormController::class, 'store'])->name('vendor.menu.post');
     Route::get('/vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
     Route::post('/vendor/profile', [ProfileController::class, 'store'])->name('vendor.store');
     Route::put('/vendor/profile/{id}', [ProfileController::class, 'update'])->name('vendor.update');

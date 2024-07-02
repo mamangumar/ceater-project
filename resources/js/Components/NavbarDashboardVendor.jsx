@@ -3,7 +3,7 @@ import { DarkThemeToggle, Navbar, Avatar, Dropdown } from "flowbite-react";
 export default function NavVendor({ username, userEmail, userImage }) {
     return (
         <>
-            <Navbar fluid>
+            <Navbar fluid className="fixed w-full">
                 <Navbar.Brand>
                     <span className="self-center whitespace-nowrap text-xl ml-4 font-semibold dark:text-white">
                         CEATER
@@ -43,10 +43,12 @@ export default function NavVendor({ username, userEmail, userImage }) {
                     <Navbar.Toggle />
                 </div>
                 <Navbar.Collapse color="yellow">
-                    <Navbar.Link href="#" active>
+                    <Navbar.Link href="/vendor/dashboard" active>
                         Home
                     </Navbar.Link>
-                    <Navbar.Link href="#">Order Costumer</Navbar.Link>
+                    <Navbar.Link href="/vendor/orders">
+                        Order Costumer
+                    </Navbar.Link>
                 </Navbar.Collapse>
             </Navbar>
         </>
