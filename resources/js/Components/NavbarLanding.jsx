@@ -1,9 +1,10 @@
+
 import { Inertia } from "@inertiajs/inertia";
 import { Button, DarkThemeToggle, Modal, Navbar } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-export default function NavbarLanding() {
+export default function NavbarLanding({isTranslucent = false}) {
 
     const GoToPageLogin = () => {
         Inertia.get("/login");
@@ -13,7 +14,10 @@ export default function NavbarLanding() {
     };
     return (
         <>
-            <Navbar fluid className=" bg-[#1a1a1a] dark:bg-[#1a1a1a]">
+            <Navbar fluid className={
+                isTranslucent ? " fixed w-full bg-opacity-0" : " fixed w-full bg-[#1a1a1a] dark:bg-[#1a1a1a]"
+            }
+            >
                 
                 <Navbar.Brand>
                     <span className="self-center whitespace-nowrap text-xl text-white font-bold dark:text-white">
