@@ -66,7 +66,10 @@ export default function Login() {
                         <div>
                             <span className="text-white">
                                 Belum punya akun?{" "}
-                                <a href="/register" className="font-bold text-[#ffaf72] ">
+                                <a
+                                    href="/register"
+                                    className="font-bold text-[#ffaf72] "
+                                >
                                     Register disini
                                 </a>
                             </span>

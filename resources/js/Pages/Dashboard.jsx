@@ -6,6 +6,10 @@ export default function Dashboard({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
+<<<<<<< HEAD
+=======
+                
+>>>>>>> 00960fd33c4b4782918e6a0fe3b43272048805f9
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
                     Dashboard
                 </h2>

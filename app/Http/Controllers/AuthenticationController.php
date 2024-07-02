@@ -11,8 +11,9 @@ use Inertia\Inertia;
 
 class AuthenticationController extends Controller
 {
-    public function register (Request $request){
-         $validator = Validator::make($request->all(),[
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|',
             'password' => 'required|string|min:8|confirmed'
@@ -23,23 +24,26 @@ class AuthenticationController extends Controller
         }
 
         $user = User::create([
-             'name' => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
         Auth::login($user);
         return Inertia::render('Auth/AuthV2/Login');
     }
-    public function login (Request $request){
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
 
-         if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             // Redirect based on user role
+            // Redirect based on user role
             if (Auth::user()->role === 'admin') {
-                // return Inertia::location(route('AdminDashboard'));
-                // return redirect()->route('AdminDashboard');
+                return redirect()->route('admin.dashboard');
+            } elseif (Auth::user()->role === 'vendor') {
+                return redirect()->route('vendor.dashboard');
             } else {
                 return redirect()->route('dashboard');
             }
