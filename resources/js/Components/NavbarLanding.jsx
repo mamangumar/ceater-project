@@ -1,9 +1,11 @@
+
 import { Inertia } from "@inertiajs/inertia";
 import { Button, DarkThemeToggle, Modal, Navbar } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-export default function NavbarLanding() {
+export default function NavbarLanding({isTranslucent = false}) {
+
     const GoToPageLogin = () => {
         Inertia.get("/login");
     };
@@ -12,7 +14,11 @@ export default function NavbarLanding() {
     };
     return (
         <>
-            <Navbar fluid className=" bg-[#1a1a1a] dark:bg-[#1a1a1a]">
+            <Navbar fluid className={
+                isTranslucent ? " fixed w-full bg-opacity-0" : " fixed w-full bg-[#1a1a1a] dark:bg-[#1a1a1a]"
+            }
+            >
+                
                 <Navbar.Brand>
                     <span className="self-center whitespace-nowrap text-xl text-white font-bold dark:text-white">
                         CEATER
@@ -36,24 +42,9 @@ export default function NavbarLanding() {
                     <Navbar.Toggle className="ml-4" />
                 </div>
                 <Navbar.Collapse color="yellow">
-                    <Navbar.Link
-                        className="text-base text-white dark:text-white"
-                        href="/"
-                    >
-                        Home
-                    </Navbar.Link>
-                    <Navbar.Link
-                        className="text-base text-white dark:text-white"
-                        href="/catalog"
-                    >
-                        Catalog
-                    </Navbar.Link>
-                    <Navbar.Link
-                        className="text-base text-white dark:text-white"
-                        href="/about"
-                    >
-                        About
-                    </Navbar.Link>
+                    <Navbar.Link className="text-base text-white dark:text-white" href="/">Home</Navbar.Link>
+                    <Navbar.Link className="text-base text-white dark:text-white" href="/catalog">Catalog</Navbar.Link>
+                    <Navbar.Link className="text-base text-white dark:text-white"href="/about">About</Navbar.Link>
                 </Navbar.Collapse>
             </Navbar>
         </>
