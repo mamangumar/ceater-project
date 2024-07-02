@@ -2,6 +2,10 @@ import NavbarLanding from "@/Components/NavbarLanding";
 import { Head } from "@inertiajs/react";
 import { Blockquote } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import NavbarLanding from "@/Components/NavbarLanding";
+import { Head } from "@inertiajs/react";
+import { Blockquote } from "flowbite-react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (

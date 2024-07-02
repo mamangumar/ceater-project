@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
             $table->string('phone_number')->nullable();
-
         });
     }
 
@@ -40,7 +39,7 @@ return new class extends Migration
             $table->dropColumn('country')->nullable();
             $table->dropColumn('phone_number')->nullable();
         });
-         Schema::dropIfExists('users');
+        Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

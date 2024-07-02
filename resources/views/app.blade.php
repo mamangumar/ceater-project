@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @routes
@@ -15,6 +16,7 @@
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
     </head>
+    <body class="font-sans antialiased bg-[#fcdfb8] dark:bg-[#1a1a1a]">
     <body class="font-sans antialiased bg-[#fcdfb8] dark:bg-[#1a1a1a]">
         @inertia
         
